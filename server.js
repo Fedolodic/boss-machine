@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
 
 module.exports = app;
 
@@ -11,8 +12,8 @@ const PORT = process.env.PORT || 4001;
 // Add middleware for handling CORS requests from index.html
 
 
-// Add middware for parsing request bodies here:
-
+// Add middleware for parsing request bodies here:
+app.use(bodyParser);
 
 // Mount your existing apiRouter below at the '/api' path.
 const apiRouter = require('./server/api');
