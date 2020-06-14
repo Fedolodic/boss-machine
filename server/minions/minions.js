@@ -2,7 +2,14 @@ const minionsRouter = require('express').Router();
 
 module.exports = minionsRouter;
 
+const {
+   getAllFromDatabase
+} = require('../db');
+
 // GET /api/minions to get an array of all minions
+minionsRouter.get('/', (req, res, next) => {
+   res.send(getAllFromDatabase('minions'));
+});
 
 // POST /api/minions to create a new minion and save it to the database
 
