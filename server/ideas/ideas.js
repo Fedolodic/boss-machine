@@ -37,5 +37,9 @@ ideasRouter.get('/id', (req, res, next) => {
 });
 
 // PUT /api/ideas/:ideaId to update a single idea by id
+ideaRouter.put('/:id', (req, res, next) => {
+    let updatedInstance = updateInstanceInDatabase('ideas', req.body);
+    res.send(req.idea);
+});
 
 // DELETE /api/ideas/:ideaId to delete a single idea by id
