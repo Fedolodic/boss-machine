@@ -10,7 +10,7 @@ const {
     deleteFromDatabasebyId
 } = require('../db');
 
-minionsRouter.param('minionId', (req, res, next) => {
+minionsRouter.param('minionId', (req, res, next, id) => {
    const minion =  getFromDatabaseById('minions', id);
    if (minion) {
        req.minion = minion;

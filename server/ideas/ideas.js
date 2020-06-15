@@ -10,6 +10,16 @@ const {
     deleteFromDatabasebyId
 } = require('../db');
 
+ideasRouter.param('id', (req, res, next, id) => {
+   const idea = getFromDatabaseById('ideas', id);
+   if (idea) {
+       req.idea = idea;
+       next();
+   } else {
+       res.status(404).send();
+   }
+});
+
 // GET /api/ideas to get an array of all ideas
 ideasRouter.get('/', (req, res, next) => {
    res.send(getAllFromDatabase('ideas'));
@@ -22,6 +32,9 @@ ideasRouter.post('/', (req, res, next) => {
 });
 
 // GET /api/ideas/:ideaId to get a single idea by id
+ideasRouter.get('/id', (req, res, next) => {
+    res.send(req.idea);
+});
 
 // PUT /api/ideas/:ideaId to update a single idea by id
 

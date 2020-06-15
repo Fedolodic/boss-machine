@@ -5,7 +5,8 @@ const minionsRouter = require('./minions/minions');
 const ideasRouter = require('./ideas/ideas');
 const meetingsRouter = require('./meetings/meetings');
 
-// Can I use .use() with arrays?
-apiRouter.use(['/minions', '/ideas', '/meetings'], [minionsRouter, ideasRouter, meetingsRouter]);
+apiRouter.use('/minions', minionsRouter);
+apiRouter.use('/ideas', ideasRouter);
+apiRouter.use('/meetings', meetingsRouter);
 
 module.exports = apiRouter;
