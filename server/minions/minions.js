@@ -5,7 +5,8 @@ module.exports = minionsRouter;
 const {
     getAllFromDatabase,
     addToDatabase,
-    getFromDatabaseById
+    getFromDatabaseById,
+    updateInstanceInDatabase
 } = require('../db');
 
 minionsRouter.param('minionId', (req, res, next) => {
@@ -35,5 +36,9 @@ minionsRouter.get('/minionId', (req, res, next) => {
 });
 
 // PUT /api/minions/:minionId to update a single minion by id
+minionsRouter.put('/:minionId', (req, res, next) => {
+   let updatedMinionInstance =  updateInstanceInDatabase('minions', req.body);
+   res.send(updatedMinionInstance);
+});
 
 // DELETE /api/minions/:minionId to delete a single minion by id
