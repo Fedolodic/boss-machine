@@ -2,8 +2,17 @@ const meetingsRouter = require('express').Router();
 
 module.exports = meetingsRouter;
 
-// GET /api/meetings to get an array of all meetings
+const {
+    getAllFromDatabase,
+    addToDatabase,
+    deleteAllFromDatabase,
+    createMeeting
+} = require('../db');
 
+// GET /api/meetings to get an array of all meetings
+meetingsRouter.get('/', (req, res, next) => {
+    res.send(getAllFromDatabase('meetings'));
+})
 
 // POST /api/meetings to create a new meeting and save it to the database
 
