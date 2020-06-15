@@ -43,3 +43,12 @@ ideaRouter.put('/:id', (req, res, next) => {
 });
 
 // DELETE /api/ideas/:ideaId to delete a single idea by id
+ideasRouter.delete('/:id', (req, res, next) => {
+   const deleted = deleteFromDatabasebyId('ideas', req.params.id);
+   if (deleted) {
+       res.status(204);
+   } else {
+       res.status(500);
+   }
+   res.send();
+});
