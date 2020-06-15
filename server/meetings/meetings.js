@@ -15,6 +15,9 @@ meetingsRouter.get('/', (req, res, next) => {
 })
 
 // POST /api/meetings to create a new meeting and save it to the database
-
+meetingsRouter.post('/', (req, res, next) => {
+    let newMeeting = addToDatabase('meetings', createMeeting());
+    res.status(201).send(newMeeting);
+})
 
 // DELETE /api/meetings to delete all meetings from the database
